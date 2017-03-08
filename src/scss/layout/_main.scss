@@ -2,7 +2,7 @@ main {
     background-color: $color-lightbrown;
 }
 
-.comment-box{
+.comment-box {
     display: flex;
     flex-wrap: wrap;
 }
@@ -15,11 +15,18 @@ main {
     flex-wrap: wrap;
     flex-direction: column;
 
-    span{
+    span {
         padding: 6px 0;
-        &.body{
+        &.body {
             quotes: "\2018" "\2019";
             flex: 1 0 auto;
         }
     }
+}
+
+.form-box {
+    border: 1px solid $color-brown;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
 }

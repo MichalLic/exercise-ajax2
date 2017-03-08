@@ -88,18 +88,13 @@ var CommentApp = {
     },
 
     formValid: function (btn) {
-        if (!$(btn).parent().find('input[name=name]').val() == '' ||
-            !$(btn).parent().find('input[name=comment]').val() == '' ||
-            !$(btn).parent().find('input[name=email]').val() == '') {
-            console.log($(btn).parent().find('input[name=name]').val());
-            console.log($(btn).parent().find('input[name=comment]').val());
-            console.log($(btn).parent().find('input[name=email]').length);
-
+        if ($(btn).parent().find('input[name=name]').val() == '' ||
+            $(btn).parent().find('input[name=comment]').val() == '' ||
+            $(btn).parent().find('input[name=email]').val() == '') {
+            return false
+        } else {
             CommentApp.getInputValue(btn);
-
             CommentApp.resetForm();
-            return true;
-
         }
     }
 

@@ -1,0 +1,17 @@
+footer {
+    background-color: $color-darkbrown;
+    padding: 15px 0;
+
+    span {
+        color: $color-text-primary;
+    }
+}
+
+a {
+    color: $color-text-primary;
+    transition: 0.3s;
+    &:hover {
+        color: darken($color-text-primary, 30%);
+        text-decoration: none;
+    }
+}

@@ -61,7 +61,14 @@ var CommentApp = {
     onSend: function (btn) {
         $(btn).on('click', function (e) {
             CommentApp.getInputValue(btn);
+            CommentApp.resetForm();
         });
+    },
+
+    resetForm: function () {
+        setTimeout(function(){
+            $('.mui-form')[0].reset();
+        }, 2000)
     },
 
     getInputValue: function (btn) {

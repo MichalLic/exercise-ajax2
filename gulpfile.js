@@ -7,11 +7,15 @@ var PATH = {
     ],
     css_vendor: [
         './node_modules/muicss/dist/css/mui.min.css',
-        './node_modules/font-awesome/css/font-awesome.min.css'
+        './node_modules/font-awesome/css/font-awesome.min.css',
+        '.node_modules/font-awesome/css/font-awesome.min.css'
     ],
     fonts_vendor: './node_modules/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}',
     DIST: './dist',
-    static: './src/images/*'
+    static: [
+        './src/images/*'
+        //'./src/fonts/*'
+    ]
 };
 
 //

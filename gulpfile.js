@@ -3,10 +3,10 @@ var PATH = {
     js: './src/js/**/*.js',
     js_vendor: [
         './node_modules/jquery/dist/jquery.min.js',
-        './node_modules/bootstrap/dist/js/bootstrap.min.js'
+        './node_modules/muicss/dist/js/mui.min.js'
     ],
     css_vendor: [
-        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/muicss/dist/css/mui.min.css',
         './node_modules/font-awesome/css/font-awesome.min.css'
     ],
     fonts_vendor: './node_modules/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}',

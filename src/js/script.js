@@ -38,7 +38,7 @@ var CommentApp = {
         box += '<div class="mui-col-xs-10 mui-col-xs-offset-1 padding0">';
         box += '<div class="mui-row comment-box">';
         for (var i = 0; i < 14; i++) {
-            box += '<div class="comment-detail mui-col-md-4 mui-col-xs-5">';
+            box += '<div class="comment-detail mui-col-md-4 mui-col-xs-6">';
             box += '<div class="flex-container">';
             box += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + comments[i].id + ', event.target)"></a></i>';
             box += '<span class="name">' + comments[i].name + '</span>';
@@ -47,7 +47,6 @@ var CommentApp = {
             box += '</div>';
             box += '</div>';
         }
-
         box += '</div>';
         box += '</div>';
         $('.comments-section').append(box);
@@ -61,6 +60,7 @@ var CommentApp = {
     onSend: function (btn) {
         $(btn).on('click', function (e) {
             CommentApp.validation(btn);
+            CommentApp.getFormData($('.mui-form'))
         });
     },
 
@@ -73,26 +73,33 @@ var CommentApp = {
     getInputValue: function (btn) {
         CommentApp.COMMENT_ID++;
         var block = "";
-        var inputValue = {
-            titleValue: ($(btn).parent().find('input[name=name]').val()),
-            commentValue: ($(btn).parent().find('input[name=comment]').val()),
-            emailValue: ($(btn).parent().find('input[name=email]').val())
-        };
-        block += '<div class="comment-detail mui-col-md-4 mui-col-lg-3 mui-col-xs-5 mui-col-xs-offset-1">';
-        block += '<a href="#"><i class="fa fa-trash" aria-hidden="true bin-delete" onclick="CommentApp.removeComments(' + CommentApp.COMMENT_ID + ', event.target)"></a></i>';
-        block += '<span class="name">' + inputValue.titleValue + '</span>';
-        block += '<span class="body"><q>' + inputValue.commentValue + '</q></span>';
-        block += '<span class="email">' + inputValue.emailValue + '</span>';
+        var formData = CommentApp.getFormData($('.mui-form'));
+        block += '<div class="comment-detail mui-col-md-4 mui-col-xs-6">';
+        block += '<div class="flex-container">';
+        block += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + CommentApp.COMMENT_ID + ', event.target)"></a></i>';
+        block += '<span class="name">' + formData.name + '</span>';
+        block += '<span class="body"><q>' + formData.comment + '</q></span>';
+        block += '<span class="email">' + formData.email + '</span>';
         block += '</div>';
-
+        block += '</div>';
         $('.comment-box').prepend(block);
     },
 
+    getFormData: function (form) {
+        form = form.serializeArray();
+         var obj = {};
+        $.each(form, function(index, item){
+            obj[item.name] = item.value;
+        });
+        return obj
+    },
+
     validation: function (btn) {
-        if ($(btn).parent().find('input[name=name]').val() == '' ||
-            $(btn).parent().find('input[name=comment]').val() == '' ||
-            $(btn).parent().find('input[name=email]').val() == '' ||
-            !$(btn).parent().find('input[name=email]').val().match(CommentApp.EMAIL_REGEX)) {
+        var formData = CommentApp.getFormData($('.mui-form'));
+        if (formData.name == '' ||
+            formData.comment == '' ||
+            formData.name.email == '' ||
+            !formData.email.match(CommentApp.EMAIL_REGEX)) {
             CommentApp.throwError();
             return false
         } else {

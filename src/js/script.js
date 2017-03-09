@@ -9,7 +9,6 @@ var CommentApp = {
     EMAIL_REGEX: /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/,
     ERROR_TEXT_CL: '.error-text',
 
-
     //init
     init: function () {
         CommentApp.getComments();
@@ -39,13 +38,16 @@ var CommentApp = {
         box += '<div class="mui-col-xs-10 mui-col-xs-offset-1 padding0">';
         box += '<div class="mui-row comment-box">';
         for (var i = 0; i < 14; i++) {
-            box += '<div class="comment-detail mui-col-md-4 mui-col-lg-3 mui-col-xs-5 mui-col-xs-offset-1">';
-            box += '<a href="#"><i class="fa fa-trash" aria-hidden="true bin-delete" onclick="CommentApp.removeComments(' + comments[i].id + ', event.target)"></a></i>';
+            box += '<div class="comment-detail mui-col-md-4 mui-col-xs-5">';
+            box += '<div class="flex-container">';
+            box += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + comments[i].id + ', event.target)"></a></i>';
             box += '<span class="name">' + comments[i].name + '</span>';
             box += '<span class="body"><q>' + comments[i].body + '</q></span>';
             box += '<span class="email">' + comments[i].email + '</span>';
             box += '</div>';
+            box += '</div>';
         }
+
         box += '</div>';
         box += '</div>';
         $('.comments-section').append(box);
@@ -53,9 +55,6 @@ var CommentApp = {
 
     removeComments: function (id, e) {
         event.preventDefault();
-        console.log(e);
-        console.log(id);
-        console.log($(e).parent().parent());
         $(e).closest('.comment-detail').remove();
     },
 
@@ -79,7 +78,6 @@ var CommentApp = {
             commentValue: ($(btn).parent().find('input[name=comment]').val()),
             emailValue: ($(btn).parent().find('input[name=email]').val())
         };
-
         block += '<div class="comment-detail mui-col-md-4 mui-col-lg-3 mui-col-xs-5 mui-col-xs-offset-1">';
         block += '<a href="#"><i class="fa fa-trash" aria-hidden="true bin-delete" onclick="CommentApp.removeComments(' + CommentApp.COMMENT_ID + ', event.target)"></a></i>';
         block += '<span class="name">' + inputValue.titleValue + '</span>';

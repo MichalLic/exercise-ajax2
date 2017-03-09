@@ -11,7 +11,10 @@ var PATH = {
     ],
     fonts_vendor: './node_modules/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}',
     DIST: './dist',
-    static: './src/images/*'
+    static: [
+        './src/images/*'
+        //'./src/fonts/*'
+    ]
 };
 
 //
@@ -20,6 +23,7 @@ var PATH = {
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
+var plumber = require('gulp-plumber');
 var $ = require('gulp-load-plugins')();
 
 //
@@ -56,6 +60,7 @@ gulp.task('watch', function () {
 //js task
 gulp.task('js', function () {
     return gulp.src(PATH.js)
+        .pipe(plumber())
         .pipe($.sourcemaps.init())
         .pipe($.concat('app.js'))
         .pipe($.uglify())

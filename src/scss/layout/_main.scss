@@ -1,0 +1,50 @@
+main {
+    background-color: $color-lightbrown;
+}
+
+.comment-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.comment-detail {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    > div {
+        position: relative;
+        width: 100%;
+        background-color: #c69c72;
+        padding: 20px 15px 5px 15px;
+    }
+    span {
+        padding: 6px 0;
+        word-break: break-all;
+        &.body {
+            quotes: "\2018" "\2019";
+            flex: 1 0 auto;
+        }
+    }
+}
+
+.form-box {
+    border: 1px solid $color-brown;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.error-text{
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 15px;
+    p{
+        display: inline-block;
+        margin: 0;
+        padding: 0 10px;
+    }
+    i{
+        font-size: 25px;
+    }
+}

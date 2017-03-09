@@ -39,7 +39,7 @@ var CommentApp = {
         box += '<div class="mui-row comment-box">';
         for (var i = 0; i < 14; i++) {
             box += '<div class="comment-detail mui-col-md-4 mui-col-xs-6">';
-            box += '<div class="flex-column">';
+            box += '<div class="flex-column data-box">';
             box += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + comments[i].id + ', event.target)"></a></i>';
             box += '<span class="name">' + comments[i].name + '</span>';
             box += '<span class="body"><q>' + comments[i].body + '</q></span>';
@@ -75,7 +75,7 @@ var CommentApp = {
         var block = "";
         var formData = CommentApp.getFormData($('.mui-form'));
         block += '<div class="comment-detail mui-col-md-4 mui-col-xs-6">';
-        block += '<div class="flex-column">';
+        block += '<div class="flex-column data-box">';
         block += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + CommentApp.COMMENT_ID + ', event.target)"></a></i>';
         block += '<span class="name">' + formData.name + '</span>';
         block += '<span class="body"><q>' + formData.comment + '</q></span>';

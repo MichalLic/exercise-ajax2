@@ -30,3 +30,18 @@ main {
     margin-bottom: 20px;
     padding: 15px;
 }
+
+.error-text{
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 15px;
+    p{
+        display: inline-block;
+        margin: 0;
+        padding: 0 10px;
+    }
+    i{
+        font-size: 25px;
+    }
+}

@@ -6,12 +6,15 @@ var CommentApp = {
     //variables
     URL: 'https://jsonplaceholder.typicode.com',
     COMMENT_ID: '0',
+    EMAIL_REGEX: /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/,
+    ERROR_TEXT_CL: '.error-text',
 
 
     //init
     init: function () {
         CommentApp.getComments();
         CommentApp.onSend($('.btn-add'));
+        CommentApp.scroll();
     },
 
 
@@ -58,7 +61,7 @@ var CommentApp = {
 
     onSend: function (btn) {
         $(btn).on('click', function (e) {
-            CommentApp.formValid(btn);
+            CommentApp.validation(btn);
         });
     },
 
@@ -87,18 +90,34 @@ var CommentApp = {
         $('.comment-box').prepend(block);
     },
 
-    formValid: function (btn) {
+    validation: function (btn) {
         if ($(btn).parent().find('input[name=name]').val() == '' ||
             $(btn).parent().find('input[name=comment]').val() == '' ||
-            $(btn).parent().find('input[name=email]').val() == '') {
+            $(btn).parent().find('input[name=email]').val() == '' ||
+            !$(btn).parent().find('input[name=email]').val().match(CommentApp.EMAIL_REGEX)) {
+            CommentApp.throwError();
             return false
         } else {
+            CommentApp.destroyMessage();
             CommentApp.getInputValue(btn);
             CommentApp.resetForm();
         }
+    },
+
+    throwError: function () {
+        $(CommentApp.ERROR_TEXT_CL).fadeIn('fast');
+    },
+
+    destroyMessage: function () {
+        $(CommentApp.ERROR_TEXT_CL).fadeOut('slow');
+    },
+
+    scroll: function () {
+        $("a[href='#top']").on('click', function() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
     }
-
-
 };
 
 $(document).ready(function () {

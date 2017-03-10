@@ -25,7 +25,6 @@ var userApp = {
     onShowUsers: function (btn) {
         $(btn).on('click', function () {
             userApp.getUsers();
-            console.log("hahahaha")
         });
     },
 

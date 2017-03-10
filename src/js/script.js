@@ -27,7 +27,7 @@ var CommentApp = {
                 CommentApp.drawComments(response);
             },
             error: function () {
-                console.log('Getting data error!')
+                console.log('Getting comment error!')
             }
         });
     },
@@ -53,8 +53,17 @@ var CommentApp = {
     },
 
     removeComments: function (id, e) {
-        event.preventDefault();
-        $(e).closest('.comment-detail').remove();
+        $.ajax({
+            url: CommentApp.URL + '/posts/' + id,
+            type: 'DELETE',
+            success: function () {
+                $(e).closest('.comment-detail').remove();
+            },
+            error: function () {
+                console.log('Removing comment error');
+            }
+        });
+
     },
 
     onSend: function (btn) {
@@ -87,8 +96,8 @@ var CommentApp = {
 
     getFormData: function (form) {
         form = form.serializeArray();
-         var obj = {};
-        $.each(form, function(index, item){
+        var obj = {};
+        $.each(form, function (index, item) {
             obj[item.name] = item.value;
         });
         return obj
@@ -98,8 +107,7 @@ var CommentApp = {
         var formData = CommentApp.getFormData($('.mui-form'));
         if (formData.name == '' ||
             formData.comment == '' ||
-            formData.name.email == '' ||
-            !formData.email.match(CommentApp.EMAIL_REGEX)) {
+            formData.name.email == '' || !formData.email.match(CommentApp.EMAIL_REGEX)) {
             CommentApp.throwError();
             return false
         } else {
@@ -118,8 +126,8 @@ var CommentApp = {
     },
 
     scrollToTop: function () {
-        $("a[href='#top']").on('click', function() {
-            $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("a[href='#top']").on('click', function () {
+            $("html, body").animate({scrollTop: 0}, "slow");
             return false;
         });
     }

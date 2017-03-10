@@ -1,12 +1,8 @@
-.user-box{
-    margin: 10px 0;
-    display: flex;
-    span {
-        color: $color-darkbrown;
+table {
+    padding-top: 40px;
+    margin: 0 auto;
+    tr {
+        background-color: $color-brown
     }
-}
 
-.show-content{
-    text-align: center;
-    padding: 30px 0;
 }

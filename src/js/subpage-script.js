@@ -5,7 +5,6 @@ var userApp = {
     //init
     init: function () {
         userApp.onShowUsers($('.show-users'));
-        //userApp.onHideUsers($('.hide-users'));
     },
 
     //function
@@ -27,14 +26,8 @@ var userApp = {
         $(btn).on('click', function () {
             userApp.getUsers();
             console.log("hahahaha")
-            //userApp.showButton();
         });
     },
-    //onHideUsers: function (btn) {
-    //    $(btn).on('click', function () {
-    //        userApp.removeUsers();
-    //    });
-    //},
 
     drawUsers: function (users) {
         var userBlock = '';
@@ -65,22 +58,13 @@ var userApp = {
             url: userApp.URL + '/users/' + id,
             type: 'DELETE',
             success: function () {
-                $(btn).parent().parent('.data-box', '.mui-col-md-6', '.mui-col-xs-12').remove();
+                $(btn).closest('.user-box').remove();
             },
             error: function () {
                 console.log('error');
             }
         });
     }
-
-    //removeUsers: function() {
-    //    $('.user-subpage-content').remove();
-    //},
-
-    //showButton: function () {
-    //    $('.hide-users').fadeIn('fast').css('display', 'inline-block');
-    //}
-
 
 };
 $(document).ready(function () {

@@ -12,7 +12,8 @@ var PATH = {
     fonts_vendor: './node_modules/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}',
     DIST: './dist',
     static: [
-        './src/images/*'
+        './src/images/*',
+        './src/html/*'
         //'./src/fonts/*'
     ]
 };
@@ -25,6 +26,9 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var plumber = require('gulp-plumber');
 var $ = require('gulp-load-plugins')();
+var os = require('os');
+var open = require('gulp-open');
+
 
 //
 // Styles (SCSS + autoprefixer + minify)
@@ -94,6 +98,12 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(PATH.DIST));
 });
 
+//open subpage
+gulp.task('open', function(){
+    gulp.src('./src/html/*.html')
+        .pipe(open());
+});
+
 
 // Static server
 gulp.task('serve', function () {
@@ -119,4 +129,4 @@ gulp.task('serve', function () {
 });
 
 // Initialization
-gulp.task('default', ['styles', 'copy', 'js-vendor', 'css-vendor', 'fonts-vendor', 'js', 'serve']);
+gulp.task('default', ['styles', 'copy', 'js-vendor', 'css-vendor', 'fonts-vendor', 'js', 'open', 'serve']);

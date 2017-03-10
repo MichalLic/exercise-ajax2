@@ -12,10 +12,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     > div {
-        position: relative;
         width: 100%;
-        background-color: #c69c72;
-        padding: 20px 15px 5px 15px;
     }
     span {
         padding: 6px 0;
@@ -25,6 +22,12 @@ main {
             flex: 1 0 auto;
         }
     }
+}
+.data-box{
+    position: relative;
+    background-color: #c69c72;
+    padding: 20px 15px 15px 15px;
+    overflow: hidden;
 }
 
 .form-box {

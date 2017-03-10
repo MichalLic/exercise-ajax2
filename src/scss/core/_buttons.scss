@@ -9,12 +9,20 @@
     background-color: $color-darkbrown;
     display: inline-block;
     padding: 10px 30px;
-    margin: 30px 0;
     transition: 0.3;
     color: $color-lightbrown;
     &:hover {
         background-color: lighten($color-darkbrown, 20%);
         color: darken($color-lightbrown, 10%);
         text-decoration: none;
+
     }
+    &:focus {
+        outline: none;
+        text-decoration: none;
+    }
+}
+
+.hide-users {
+    margin: 0;
 }

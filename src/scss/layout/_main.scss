@@ -26,7 +26,8 @@ main {
 .data-box{
     position: relative;
     background-color: #c69c72;
-    padding: 20px 15px 5px 15px;
+    padding: 20px 15px 15px 15px;
+    overflow: hidden;
 }
 
 .form-box {

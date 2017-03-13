@@ -42,7 +42,6 @@ var userApp = {
     //    $('.user-subpage-content').append(userBlock);
     //},
 
-
     drawUsers: function (users) {
         $.each(users, function (index, item) {
             CommentApp.mustacheRender(item, '#template-user', '#target-user');

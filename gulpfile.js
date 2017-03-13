@@ -3,7 +3,8 @@ var PATH = {
     js: './src/js/**/*.js',
     js_vendor: [
         './node_modules/jquery/dist/jquery.min.js',
-        './node_modules/muicss/dist/js/mui.min.js'
+        './node_modules/muicss/dist/js/mui.min.js',
+        './node_modules/mustache/mustache.min.js'
     ],
     css_vendor: [
         './node_modules/muicss/dist/css/mui.min.css',

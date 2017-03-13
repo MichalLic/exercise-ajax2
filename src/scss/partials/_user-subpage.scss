@@ -1,18 +1,15 @@
 .user-subpage-content {
-    padding-top: 40px;
+    padding: 40px 0;
 }
 
-.user-box{
+.user-box {
     display: flex;
     align-items: center;
     padding: 15px;
     border-bottom: 1px solid $color-lightbrown;
-    &:last-child{
-        border: none;
-    }
 }
 
-.data-block{
+.data-block {
     display: flex;
     justify-content: space-between;
 }
@@ -21,12 +18,12 @@
     .set-span {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap ;
+        flex-wrap: wrap;
     }
 }
 
 @media (min-width: 767px) {
-    .set-span{
+    .set-span {
         display: flex;
         justify-content: space-between;
     }

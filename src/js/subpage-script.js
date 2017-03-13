@@ -21,6 +21,7 @@ var userApp = {
             }
         });
     },
+
     //drawUsers: function (users) {
     //    var userBlock = '';
     //    userBlock += '<div class="mui-row <!--flex-wrap-->">';
@@ -41,18 +42,11 @@ var userApp = {
     //    $('.user-subpage-content').append(userBlock);
     //},
 
+
     drawUsers: function (users) {
         $.each(users, function (index, item) {
-            userApp.mustacheRender(item);
+            CommentApp.mustacheRender(item, '#template-user', '#target-user');
         });
-    },
-
-    mustacheRender: function (item) {
-        var template = $('#template').html();
-        Mustache.parse(template);
-        var rendered = Mustache.render(template, item);
-        console.log(item);
-        $('#target').append(rendered);
     },
 
     removeUsers: function (id, btn) {
@@ -67,8 +61,8 @@ var userApp = {
             }
         });
     }
-
 };
+
 $(document).ready(function () {
     userApp.init();
 });

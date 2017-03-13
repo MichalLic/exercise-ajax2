@@ -49,13 +49,16 @@
                 <div class="mui-col-md-10 mui-col-md-offset-1">
                     <div class="row">
                         <div class="mui-col-md-4 mui-col-md-offset-4 over-link">
-                            <a href="dist/html/user-subpage.html"  class="go-to" target="_blank">Show user list</a>
+                            <a href="dist/html/user-subpage.html" class="go-to" target="_blank">Show user list</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="comments-section"></div>
+            <div class="mui-col-xs-10 mui-col-xs-offset-1 padding0">
+                <div class="mui-row comment-box" id="target"></div>
+            </div>
     </div>
 </main>
 <footer>
@@ -70,9 +73,20 @@
             </a>
         </div>
     </div>
-
 </footer>
 <script type="text/javascript" src="dist/js/vendor.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
 <script type="text/javascript" src="dist/js/app.js"></script>
+<script id="template" type="x-tmpl-mustache">
+
+            <div class="comment-detail mui-col-md-4 mui-col-xs-6">
+                <div class="flex-column data-box">
+                <a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments({{id}}, event.target)"></a></i>
+                <span>{{name}}</span>
+                <span class="body"><q>{{body}}</q></span>
+                <span>{{email}}</span>
+                </div>
+            </div>
+</script>
 </body>
 </html>

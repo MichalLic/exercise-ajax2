@@ -32,24 +32,41 @@ var CommentApp = {
         });
     },
 
+    //drawComments: function (comments) {
+    //    CommentApp.COMMENT_ID++;
+    //    var box = "";
+    //    box += '<div class="mui-col-xs-10 mui-col-xs-offset-1 padding0">';
+    //    box += '<div class="mui-row comment-box">';
+    //    for (var i = 0; i < 14; i++) {
+    //        box += '<div class="comment-detail mui-col-md-4 mui-col-xs-6">';
+    //        box += '<div class="flex-column data-box">';
+    //        box += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + comments[i].id + ', event.target)"></a></i>';
+    //        box += '<span class="name">' + comments[i].name + '</span>';
+    //        box += '<span class="body"><q>' + comments[i].body + '</q></span>';
+    //        box += '<span class="email">' + comments[i].email + '</span>';
+    //        box += '</div>';
+    //        box += '</div>';
+    //    }
+    //    box += '</div>';
+    //    box += '</div>';
+    //    $('.comments-section').append(box);
+    //},
+
     drawComments: function (comments) {
         CommentApp.COMMENT_ID++;
-        var box = "";
-        box += '<div class="mui-col-xs-10 mui-col-xs-offset-1 padding0">';
-        box += '<div class="mui-row comment-box">';
-        for (var i = 0; i < 14; i++) {
-            box += '<div class="comment-detail mui-col-md-4 mui-col-xs-6">';
-            box += '<div class="flex-column data-box">';
-            box += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + comments[i].id + ', event.target)"></a></i>';
-            box += '<span class="name">' + comments[i].name + '</span>';
-            box += '<span class="body"><q>' + comments[i].body + '</q></span>';
-            box += '<span class="email">' + comments[i].email + '</span>';
-            box += '</div>';
-            box += '</div>';
+        $.each(comments, function (index, item) {
+            CommentApp.mustacheRender(item, '#template', '#target');
+            return index < 13
+        });
+    },
+
+    mustacheRender: function (data, id, target) {
+        var template = $(id).html();
+        if(template){
+            Mustache.parse(template);
+            var rendered = Mustache.render(template, data);
+            $(target).append(rendered);
         }
-        box += '</div>';
-        box += '</div>';
-        $('.comments-section').append(box);
     },
 
     removeComments: function (id, e) {

@@ -16,10 +16,12 @@
 </header>
 <main>
     <!--<div class="show-content">-->
-        <!--<a href="#" class="go-to show-users">Show Users</a>-->
-
+    <!--<a href="#" class="go-to show-users">Show Users</a>-->
     <!--</div>-->
-    <div class="user-subpage-content mui-container"></div>
+    <div class="user-subpage-content mui-container">
+        <div id="target"></div>
+
+    </div>
 </main>
 <footer>
     <div class="mui-container">
@@ -36,6 +38,22 @@
 
 </footer>
 <script type="text/javascript" src="../../dist/js/vendor.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
 <script type="text/javascript" src="../../dist/js/app.js"></script>
+<script id="template" type="x-tmpl-mustache">
+    <div class="mui-row">
+        <div class="user-box data-box padding0 mui-col-xs-10 mui-col-xs-offset-1">
+            <div class="set-span mui-col-md-10 mui-col-xs-8 padding0">
+                <span>{{name}}</span>
+                <span>{{phone}}</span>
+                <span>{{email}}</span>
+                <span>{{website}}</span>
+            </div>
+        <div class="mui-col-md-2 mui-col-xs-4 padding0 mui--text-center">
+            <a href="#" class="go-to hide-users" onclick="userApp.removeUsers({{id}},event.target)">Hide</a>
+        </div>
+        </div>
+    </div>
+</script>
 </body>
 </html>

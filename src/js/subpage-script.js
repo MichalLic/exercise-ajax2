@@ -14,65 +14,34 @@ var userApp = {
             method: 'GET',
             success: function (response) {
                 console.log(response);
-                userApp.drawUsers(response);
+                userApp.showView(response);
             },
             error: function () {
                 console.log('Getting data error!')
             }
         });
     },
-    
 
-    //drawUsers: function (users) {
-    //    var userBlock = '';
-    //    userBlock += '<div class="mui-container mui-table">';
-    //    userBlock += '<div class="mui-row flex-wrap">';
-    //    userBlock += '<div class="mui-row flex-wrap">';
-    //    for (var i = 0; i < users.length; i++) {
-    //        userBlock += '<div class="user-box mui-col-md-6 mui-col-xs-12">';
-    //        userBlock += '<div class="data-box flex-1">';
-    //        userBlock += '<div class="flex-column mui-col-xs-6 padding0">';
-    //        userBlock += '<span class="name">' + users[i].name + '</span>';
-    //        userBlock += '<span class="email">' + users[i].email + '</span>';
-    //        userBlock += '<span class="phone">' + users[i].phone + '</span>';
-    //        userBlock += '<span class="website">' + users[i].website + '</span>';
-    //        userBlock += '</div>';
-    //        userBlock += '<div class="mui-col-xs-6 padding0 mui--text-right">';
-    //        userBlock += '<a href="#" class="go-to hide-users" onclick="userApp.removeUsers('+ users[i].id +', event.target)">Hide Users</a>';
-    //        userBlock += '</div>';
-    //        userBlock += '</div>';
-    //        userBlock += '</div>';
-    //    }
-    //    userBlock += '</div>';
-    //    userBlock += '</div>';
-    //    $('.user-subpage-content').append(userBlock);
-    //},
+    showView: function (users) {
+        userApp.drawUsers(users);
+    },
 
     drawUsers: function (users) {
         var userBlock = '';
-        userBlock += '<div class="mui-col-xs-12 mui-col-md-offset-1 mui-col-md-10">';
-        userBlock += '<table class="mui-table">';
-        userBlock += '<thead>';
-        userBlock += '<tr>';
-        userBlock += '<th>Name</th>';
-        userBlock += '<th>Email</th>';
-        userBlock += '<th>Phone</th>';
-        userBlock += '<th>Website</th>';
-        userBlock += '<th></th>';
-        userBlock += '</tr>';
-        userBlock += '</thead>';
-        userBlock += '<tbody>';
+        userBlock += '<div class="mui-row <!--flex-wrap-->">';
         for (var i = 0; i < users.length; i++) {
-            userBlock += '<tr>';
-            userBlock += '<td><span class="name">' + users[i].name + '</span></td>';
-            userBlock += '<td><span class="email">' + users[i].email + '</span></td>';
-            userBlock += '<td><span class="phone">' + users[i].phone + '</span></td>';
-            userBlock += '<td><span class="website">' + users[i].website + '</span></td>';
-            userBlock += '<td><a href="#" class="go-to" onclick="userApp.removeUsers(' + users[i].id + ', event.target)">Hide</a></tr></tr>';
-            userBlock += '</tr>';
+            userBlock += '<div class="user-box data-box padding0 mui-col-xs-10 mui-col-xs-offset-1">';
+            userBlock += '<div class="set-span  mui-col-md-10 mui-col-xs-8 padding0">';
+            userBlock += '<span>' + users[i].name + '</span>';
+            userBlock += '<span>' + users[i].email + '</span>';
+            userBlock += '<span>' + users[i].phone + '</span>';
+            userBlock += '<span>' + users[i].website + '</span>';
+            userBlock += '</div>';
+            userBlock += '<div class="mui-col-md-2 mui-col-xs-4 padding0 mui--text-center">';
+            userBlock += '<a href="#" class="go-to hide-users" onclick="userApp.removeUsers('+ users[i].id +', event.target)">Hide</a>';
+            userBlock += '</div>';
+            userBlock += '</div>';
         }
-        userBlock += '</tbody>';
-        userBlock += '</table>';
         userBlock += '</div>';
         $('.user-subpage-content').append(userBlock);
     },
@@ -82,8 +51,7 @@ var userApp = {
             url: userApp.URL + '/users/' + id,
             type: 'DELETE',
             success: function () {
-
-                $(btn).closest('tr').remove();
+                $(btn).closest('.user-box').remove();
             },
             error: function () {
                 console.log('error');

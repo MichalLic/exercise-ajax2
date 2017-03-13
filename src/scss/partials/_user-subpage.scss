@@ -1,8 +1,33 @@
-table {
+.user-subpage-content {
     padding-top: 40px;
-    margin: 0 auto;
-    tr {
-        background-color: $color-brown
-    }
+}
 
+.user-box{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid $color-lightbrown;
+    &:last-child{
+        border: none;
+    }
+}
+
+.data-block{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+    .set-span {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap ;
+    }
+}
+
+@media (min-width: 767px) {
+    .set-span{
+        display: flex;
+        justify-content: space-between;
+    }
 }

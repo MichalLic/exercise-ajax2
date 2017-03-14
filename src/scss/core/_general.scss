@@ -7,6 +7,7 @@ body {
 main {
     flex: 1;
 }
+
 .padding0 {
     padding: 0;
 }
@@ -24,4 +25,17 @@ main {
 
 .flex-1{
     flex: 1;
+}
+
+a {
+    color: $color-text-primary;
+    transition: 0.3s;
+    &:hover {
+        color: darken($color-text-primary, 30%);
+        text-decoration: none;
+    }
+}
+
+.width100 {
+    width: 100%;
 }

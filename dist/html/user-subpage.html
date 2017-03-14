@@ -33,7 +33,6 @@
     </div>
 </footer>
 <script type="text/javascript" src="../../dist/js/vendor.js"></script>
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>-->
 <script type="text/javascript" src="../../dist/js/app.js"></script>
 <script id="template-user" type="x-tmpl-mustache">
     <div class="mui-row">
@@ -45,7 +44,7 @@
                 <span>{{website}}</span>
             </div>
         <div class="mui-col-md-2 mui-col-xs-4 padding0 mui--text-center">
-            <a href="#" class="go-to hide-users" onclick="userApp.removeUsers({{id}},event.target)">Hide</a>
+            <a href="#" class="go-to hide-users" onclick="userApp.removeUser({{id}},event.target)">Hide</a>
         </div>
         </div>
     </div>

@@ -11,23 +11,24 @@ main {
     padding: 15px;
     display: flex;
     flex-wrap: wrap;
-    > div {
-        width: 100%;
-    }
+
     span {
         padding: 6px 0;
         word-break: break-all;
-        &.body {
+
+        &.comment-content {
             quotes: "\2018" "\2019";
             flex: 1 0 auto;
         }
     }
 }
-.data-box{
+
+.data-box {
     position: relative;
-    background-color: #c69c72;
+    background-color: $color-brown;
     padding: 20px 15px 15px 15px;
     overflow: hidden;
+
 }
 
 .form-box {
@@ -37,21 +38,19 @@ main {
     padding: 15px;
 }
 
-.error-text{
+.error-text {
     display: none;
     text-align: center;
     font-size: 20px;
     padding-top: 15px;
-    p{
+
+    p {
         display: inline-block;
         margin: 0;
         padding: 0 10px;
     }
-    i{
+
+    i {
         font-size: 25px;
     }
-}
-
-.over-link {
-    text-align: center;
 }

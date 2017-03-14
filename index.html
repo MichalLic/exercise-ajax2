@@ -48,7 +48,7 @@
             <div class="mui-row">
                 <div class="mui-col-md-10 mui-col-md-offset-1">
                     <div class="row">
-                        <div class="mui-col-md-4 mui-col-md-offset-4 over-link">
+                        <div class="mui-col-md-4 mui-col-md-offset-4 mui--text-center">
                             <a href="dist/html/user-subpage.html" class="go-to" target="_blank">Show user list</a>
                         </div>
                     </div>
@@ -79,9 +79,9 @@
 <script id="template" type="x-tmpl-mustache">
             <div class="comment-detail mui-col-md-4 mui-col-xs-6">
                 <div class="flex-column data-box">
-                <a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments({{id}}, event.target)"></a></i>
+                <a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComment({{id}}, event.target)"></a></i>
                 <span>{{name}}</span>
-                <span class="body"><q>{{body}}</q></span>
+                <span class="comment-content"><q>{{body}}</q></span>
                 <span>{{email}}</span>
                 </div>
             </div>

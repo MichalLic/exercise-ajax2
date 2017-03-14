@@ -14,17 +14,15 @@
     justify-content: space-between;
 }
 
-@media (max-width: 767px) {
-    .set-span {
-        display: flex;
+.set-span {
+    display: flex;
+
+    @media (max-width: $bp-md) {
         flex-direction: column;
         flex-wrap: wrap;
     }
-}
 
-@media (min-width: 767px) {
-    .set-span {
-        display: flex;
+    @media (min-width: $bp-lg) {
         justify-content: space-between;
     }
 }

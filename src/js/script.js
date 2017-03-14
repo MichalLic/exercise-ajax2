@@ -5,9 +5,9 @@
 var CommentApp = {
     //variables
     URL: 'https://jsonplaceholder.typicode.com',
-    COMMENT_ID: '0',
     EMAIL_REGEX: /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/,
     ERROR_TEXT_CL: '.error-text',
+
 
     //init
     init: function () {
@@ -23,33 +23,37 @@ var CommentApp = {
             url: CommentApp.URL + '/comments',
             method: 'GET',
             success: function (response) {
-                console.log(response);
                 CommentApp.drawComments(response);
             },
             error: function () {
-                console.log('Getting comment error!')
+                CommentApp.showErrorAlert('Getting comments error!');
             }
         });
     },
 
+    showErrorAlert: function (message) {
+        alert(message);
+        console.log(message);
+    },
+
     drawComments: function (comments) {
-        CommentApp.COMMENT_ID++;
-        $.each(comments, function (index, item) {
+        // limit comments length
+        var sliceComments = comments.slice(0, 20);
+        $.each(sliceComments, function (index, item) {
             CommentApp.mustacheRender(item, '#template', '#target');
-            return index < 13
         });
     },
 
     mustacheRender: function (data, id, target) {
         var template = $(id).html();
-        if(template){
+        if (template) {
             Mustache.parse(template);
             var rendered = Mustache.render(template, data);
             $(target).append(rendered);
         }
     },
 
-    removeComments: function (id, e) {
+    removeComment: function (id, e) {
         $.ajax({
             url: CommentApp.URL + '/posts/' + id,
             type: 'DELETE',
@@ -57,14 +61,13 @@ var CommentApp = {
                 $(e).closest('.comment-detail').remove();
             },
             error: function () {
-                console.log('Removing comment error');
+                CommentApp.showErrorAlert('Removing comment error')
             }
         });
-
     },
 
     onSend: function (btn) {
-        $(btn).on('click', function (e) {
+        $(btn).on('click', function () {
             CommentApp.validation(btn);
             CommentApp.getFormData($('.mui-form'))
         });
@@ -76,19 +79,30 @@ var CommentApp = {
         }, 2000)
     },
 
-    getInputValue: function (btn) {
-        CommentApp.COMMENT_ID++;
-        var block = "";
+    drawAddedComment: function (btn, id) {
+        console.log(id);
+        var block = '';
         var formData = CommentApp.getFormData($('.mui-form'));
         block += '<div class="comment-detail mui-col-md-4 mui-col-xs-6">';
-        block += '<div class="flex-column data-box">';
-        block += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComments(' + CommentApp.COMMENT_ID + ', event.target)"></a></i>';
-        block += '<span class="name">' + formData.name + '</span>';
-        block += '<span class="body"><q>' + formData.comment + '</q></span>';
-        block += '<span class="email">' + formData.email + '</span>';
+        block += '<div class="flex-column data-box width100">';
+        block += '<a href="#" class="btn-delete"><i class="fa fa-trash" aria-hidden="true" onclick="CommentApp.removeComment(' + id + ', event.target)"></a></i>';
+        block += '<span>' + formData.name + '</span>';
+        block += '<span class="comment-content"><q>' + formData.comment + '</q></span>';
+        block += '<span>' + formData.email + '</span>';
         block += '</div>';
         block += '</div>';
         $('.comment-box').prepend(block);
+
+    },
+    sendAddedComment: function (btn) {
+        $.ajax({
+            type: "POST",
+            url: CommentApp.URL + '/comments',
+            success: function (response) {
+                console.log(response);
+                CommentApp.drawAddedComment(btn, response.id);
+            }
+        });
     },
 
     getFormData: function (form) {
@@ -97,7 +111,7 @@ var CommentApp = {
         $.each(form, function (index, item) {
             obj[item.name] = item.value;
         });
-        return obj
+        return obj;
     },
 
     validation: function (btn) {
@@ -109,7 +123,7 @@ var CommentApp = {
             return false
         } else {
             CommentApp.destroyMessage();
-            CommentApp.getInputValue(btn);
+            CommentApp.sendAddedComment(btn);
             CommentApp.resetForm();
         }
     },

@@ -22,7 +22,7 @@
         flex-wrap: wrap;
     }
 
-    @media (min-width: $bp-lg) {
+    @media (min-width: $bp-md + 1) {
         justify-content: space-between;
     }
 }

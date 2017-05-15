@@ -33,7 +33,6 @@ var CommentApp = {
 
     showErrorAlert: function (message) {
         alert(message);
-        console.log(message);
     },
 
     drawComments: function (comments) {
@@ -46,11 +45,9 @@ var CommentApp = {
 
     mustacheRender: function (data, id, target) {
         var template = $(id).html();
-        if (template) {
-            Mustache.parse(template);
-            var rendered = Mustache.render(template, data);
-            $(target).append(rendered);
-        }
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, data);
+        $(target).append(rendered);
     },
 
     removeComment: function (id, e) {
@@ -116,9 +113,9 @@ var CommentApp = {
 
     validation: function (btn) {
         var formData = CommentApp.getFormData($('.mui-form'));
-        if (formData.name == '' ||
-            formData.comment == '' ||
-            formData.name.email == '' || !formData.email.match(CommentApp.EMAIL_REGEX)) {
+        if (formData.name === '' ||
+            formData.comment === '' ||
+            formData.name.email === '' || !formData.email.match(CommentApp.EMAIL_REGEX)) {
             CommentApp.throwError();
             return false
         } else {

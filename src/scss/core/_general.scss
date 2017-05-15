@@ -1,41 +1,42 @@
 //sticky footer
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
+
 main {
-    flex: 1;
+  flex: 1;
 }
 
 .padding0 {
-    padding: 0;
+  padding: 0;
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap ;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-.flex-wrap{
-    display: flex;
-    flex-wrap: wrap;
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.flex-1{
-    flex: 1;
+.flex-1 {
+  flex: 1;
 }
 
 a {
-    color: $color-text-primary;
-    transition: 0.3s;
-    &:hover {
-        color: darken($color-text-primary, 30%);
-        text-decoration: none;
-    }
+  color: $color-text-primary;
+  transition: 0.3s;
+  &:hover {
+    color: darken($color-text-primary, 30%);
+    text-decoration: none;
+  }
 }
 
 .width100 {
-    width: 100%;
+  width: 100%;
 }
